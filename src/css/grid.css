@@ -1,0 +1,30 @@
+div.grid-container {
+	display: grid;
+	padding: 20px;
+	grid-template-areas:
+	'left middle middle middle middle right';
+}
+
+.sidebar-left,
+.middle-container,
+.sidebar-right {
+	padding: 10px;
+}
+
+.sidebar-left {
+	grid-area: left;
+}
+
+.middle-container {
+	grid-area: middle;
+}
+
+.sidebar-right {
+	grid-area: right;
+}
+
+.search-grid-container {
+	display: grid;
+	padding: 20px;
+	grid-template-columns: repeat(2, 1fr)
+}
