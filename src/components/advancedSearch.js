@@ -24,7 +24,7 @@ class AdvancedSearch extends Component {
    	return(
       <Paper style={paperStyle}>
         <form>
-          <Typography variant="headline" align="center" style={headerStyle}>Utvidet søk</Typography>
+          <Typography variant="display1" align="center" style={headerStyle}>Utvidet søk</Typography>
           <div className="search-grid-container">
             <FormComponentSelect items={this.sorteringer} name="Sortering" identifier="sorting"></FormComponentSelect>
             <FormComponentSelect items={this.avdelinger} name="Avdelinger" identifier="departments"></FormComponentSelect>
