@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import BookItem from './bookItem.js'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Paper from '@material-ui/core/Paper';
 
 class BookList extends Component {
 	constructor() {
@@ -27,7 +26,7 @@ class BookList extends Component {
 	}
 
 	async settingState() {
-		await this.sleep(100);
+		await this.sleep(1500);
 		this.setState({
 			books: [{
 				id: 1,
@@ -76,7 +75,7 @@ class BookList extends Component {
 	    				{books}
 	    			</div>
 	    		:
-	    			<div>
+						<div style={paperStyle}>
 		    			<CircularProgress />
 		    			<Typography variant="subheading">Henter bøker</Typography>
 		    		</div>

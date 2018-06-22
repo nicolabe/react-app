@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Grow from '@material-ui/core/Grow';
 
 const styles = {
   card: {
@@ -27,6 +28,7 @@ class BookItem extends Component {
 		const { classes } = this.props;
 
     return(
+      <Grow in={true}>
 	  	<Card className={classes.card}>
 	      <CardMedia
 	        className={classes.media}
@@ -54,6 +56,7 @@ class BookItem extends Component {
 	        </Button>
 	      </CardActions>
 	    </Card>
+	    </Grow>
     )
   }
 }

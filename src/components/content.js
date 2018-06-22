@@ -28,7 +28,7 @@ class Content extends Component {
     	<div className="grid-container">
     		<div className="sidebar-left"></div>
     		<div className="middle-container">
-	    		<Typography variant="display2" align="center">Velkommen</Typography>
+					<Typography variant="display2" align="center">Velkommen Nicolai</Typography>
 				  <SearchField />
 				  <br/>
 				  <br/>
