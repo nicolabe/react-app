@@ -20,6 +20,9 @@ const styles = theme => ({
   title: {
     margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
   },
+  form: {
+    margin: 20
+  }
 });
 
 class MyPage extends Component {
@@ -30,6 +33,7 @@ class MyPage extends Component {
       editUser: false
     };
     this.editUser = this.editUser.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
   }
 
   componentWillMount() {
@@ -47,11 +51,17 @@ class MyPage extends Component {
     this.setState({editUser: true});
   }
 
+  cancelEdit() {
+    this.setState({editUser: false});
+  }
+
   render() {
     const paperStyle = {
-      padding: 20
+      padding: 30
     };
-
+    const buttonStyle = {
+      margin: 5
+    };
 
     const { classes } = this.props;
 
@@ -61,13 +71,20 @@ class MyPage extends Component {
         <br/>
         <br/>
         <Paper style={paperStyle}>
-          <Typography variant="headline" align="center">Låneropplysninger</Typography>
           <div className={classes.demo}>
             {
               this.state.editUser?
-                <EditUser user={this.state.user}/>
+                <div>
+                  <Typography variant="headline" align="center">Oppdater opplysninger</Typography>
+                  <form className={classes.form}>
+                    <EditUser user={this.state.user}/>
+                    <Button style={buttonStyle} variant="contained" color="primary">Lagre</Button>
+                    <Button style={buttonStyle} variant="contained" onClick={this.cancelEdit}>Avbryt</Button>
+                  </form>
+                </div>
               :
                 <div>
+                  <Typography variant="headline" align="center">Låneropplysninger</Typography>
                   <ListUser user={this.state.user}/>
                   <div>
                     <Tooltip title="Endre">
