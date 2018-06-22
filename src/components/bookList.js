@@ -65,7 +65,7 @@ class BookList extends Component {
   		textAlign: 'center'
   	}
 
-   return(
+    return(
     	<div>
 	    	<Typography variant="display1" align="center">Vi anbefaler</Typography>
 	    	<br/>

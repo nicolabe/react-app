@@ -3,9 +3,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import SearchField from './searchField'
 import AdvancedSearch from './advancedSearch'
-import BookList from './bookList'
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
+import Routes from '../routes'
 import '../css/grid.css'
 
 class Content extends Component {
@@ -47,8 +47,9 @@ class Content extends Component {
 		      	:
 			      	<Fragment />
 		      }
-
-		      <BookList />
+          <div>
+            <Routes />
+          </div>
 			  </div>
 				<div className="sidebar-right"></div>
     	</div>

@@ -1,0 +1,8 @@
+.menu-links {
+    text-decoration: none;
+    color:white;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+}
