@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
+import { getUser } from '../actions/userActions';
 
 import '../css/navbar.css'
 
@@ -37,6 +38,12 @@ class Navbar extends Component {
     super();
     this.state = {
       anchorEl: null
+    }
+  }
+
+  componentWillMount() {
+    if(!Object.keys(this.props.user).length) {
+      this.props.getUser();
     }
   }
 
@@ -122,4 +129,4 @@ function mapStateToProps(state) {
   });
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(Navbar));
+export default connect(mapStateToProps, { getUser })(withStyles(styles)(Navbar));
