@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+// Material UI
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,6 +8,12 @@ import Button from '@material-ui/core/Button';
 import Edit from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 
+// Redux
+import { connect } from 'react-redux';
+import { getUser } from '../actions/userActions';
+import { updateUser } from '../actions/userActions';
+
+// Custom components
 import EditUser from './editUser';
 import ListUser from './listUser';
 
@@ -34,18 +42,12 @@ class MyPage extends Component {
     };
     this.editUser = this.editUser.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
   componentWillMount() {
-    this.setState({
-      user: {
-        name: "Nicolai Berthelsen",
-        address: "Støperiveien 4, 3267 Larvik",
-        email: "berthelsen.nicolai@gmail.com",
-        phone: "+47 40469957"
-      }
-    })
-  };
+    this.props.getUser();
+  }
 
   editUser() {
     this.setState({editUser: true});
@@ -53,6 +55,19 @@ class MyPage extends Component {
 
   cancelEdit() {
     this.setState({editUser: false});
+  }
+
+  updateUser(e) {
+    e.preventDefault();
+    this.props.updateUser(this.state.user);
+    this.cancelEdit();
+  }
+
+  onChange(user, name, value) {
+    user[name] = value;
+    this.setState({
+      user: user
+    })
   }
 
   render() {
@@ -77,15 +92,15 @@ class MyPage extends Component {
                 <div>
                   <Typography variant="headline" align="center">Oppdater opplysninger</Typography>
                   <form className={classes.form}>
-                    <EditUser user={this.state.user}/>
-                    <Button style={buttonStyle} variant="contained" color="primary">Lagre</Button>
+                    <EditUser onChange={this.onChange.bind(this)} user={this.props.user}/>
+                    <Button style={buttonStyle} type="submit" variant="contained" color="primary" onClick={this.updateUser}>Lagre</Button>
                     <Button style={buttonStyle} variant="contained" onClick={this.cancelEdit}>Avbryt</Button>
                   </form>
                 </div>
               :
                 <div>
                   <Typography variant="headline" align="center">Låneropplysninger</Typography>
-                  <ListUser user={this.state.user}/>
+                  <ListUser user={this.props.user}/>
                   <div>
                     <Tooltip title="Endre">
                       <Button variant="fab" color="primary" aria-label="edit" className={classes.button} onClick={this.editUser}>
@@ -102,4 +117,10 @@ class MyPage extends Component {
   }
 }
 
-export default withStyles(styles)(MyPage);
+function mapStateToProps(state) {
+  return({
+    user: state.user.userData
+  });
+}
+
+export default connect(mapStateToProps, { getUser, updateUser })(withStyles(styles)(MyPage));

@@ -23,6 +23,22 @@ const styles = theme => ({
 
 
 class EditUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.user.name,
+      address: this.props.user.address,
+      phone: this.props.user.phone,
+      email: this.props.user.email
+    }
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+    this.props.onChange(this.props.user, e.target.name, e.target.value);
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -32,28 +48,36 @@ class EditUser extends Component {
             <TextField
               label="Navn"
               required
-              defaultValue={this.props.user.name}
+              name="name"
+              value={this.state.name}
+              onChange={this.onChange}
             />
         </FormControl>
         <FormControl fullWidth className={classes.formControl}>
           <TextField
             label="Adresse"
             required
-            defaultValue={this.props.user.address}
+            name="address"
+            value={this.state.address}
+            onChange={this.onChange}
           />
         </FormControl>
         <FormControl fullWidth className={classes.formControl}>
           <TextField
             label="Telefonnummer"
             required
-            defaultValue={this.props.user.phone}
+            name="phone"
+            value={this.state.phone}
+            onChange={this.onChange}
           />
         </FormControl>
         <FormControl fullWidth className={classes.formControl}>
           <TextField
             label="E-post"
             required
-            defaultValue={this.props.user.email}
+            name="email"
+            value={this.state.email}
+            onChange={this.onChange}
           />
         </FormControl>
         <br/>

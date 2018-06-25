@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+// Material UI
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,12 +8,16 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Divider from '@material-ui/core/Divider';
-import { Link } from 'react-router-dom';
-
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Home from '@material-ui/icons/Home';
 import Tooltip from '@material-ui/core/Tooltip';
+
+// Router
+import { Link } from 'react-router-dom';
+
+// Redux
+import { connect } from 'react-redux';
 
 import '../css/navbar.css'
 
@@ -27,9 +33,12 @@ const styles = {
 
 
 class Navbar extends Component {
-	state = {
-    anchorEl: null,
-  };
+  constructor() {
+    super();
+    this.state = {
+      anchorEl: null
+    }
+  }
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
@@ -62,7 +71,7 @@ class Navbar extends Component {
             </IconButton>
           </Tooltip>
 	        <div>
-	        	<Typography align="left" variant="subheading" color="inherit">Nicolai
+	        	<Typography align="left" variant="subheading" color="inherit">{this.props.user.name}
             <Tooltip title="Meny">
   	          <IconButton
   	            aria-owns={open ? 'menu-appbar' : null}
@@ -107,4 +116,10 @@ class Navbar extends Component {
   }
 }
 
-export default withStyles(styles)(Navbar);
+function mapStateToProps(state) {
+  return({
+    user: state.user.userData
+  });
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(Navbar));
