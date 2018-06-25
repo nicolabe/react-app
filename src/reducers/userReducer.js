@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
     case UPDATE_USER:
       return {
         ...state,
-        userData: action.user
+        userData: Object.assign({}, action.user)
       }
     default:
       return state;
