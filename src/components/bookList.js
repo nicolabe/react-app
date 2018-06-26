@@ -1,63 +1,63 @@
-import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
-import BookItem from './bookItem.js'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { Component } from "react";
+import Typography from "@material-ui/core/Typography";
+import BookItem from "./bookItem.js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { connect } from 'react-redux';
-import { getRecommendedBooks } from '../actions/bookActions';
+import { connect } from "react-redux";
+import { getRecommendedBooks } from "../actions/bookActions";
 
 class BookList extends Component {
   componentWillMount() {
-		this.gettingBooks();
-	}
+    this.gettingBooks();
+  }
 
-	// The following block of code is just to simulate an API request
-	sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
+  // The following block of code is just to simulate an API request
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-	async gettingBooks() {
-		await this.sleep(1500);
+  async gettingBooks() {
+    await this.sleep(1500);
     this.props.getRecommendedBooks();
-	}
-	// End of simulation
+  }
+  // End of simulation
 
   render() {
     const books = this.props.books.map(book => {
-      return (
-        <BookItem key={book.id} book={book} />
-      );
+      return <BookItem key={book.id} book={book} />;
     });
 
-  	const paperStyle = {
-  		padding: 30,
-  		textAlign: 'center'
-  	}
+    const paperStyle = {
+      padding: 30,
+      textAlign: "center"
+    };
 
-    return(
-    	<div>
-	    	<Typography variant="display1" align="center">Vi anbefaler</Typography>
-	    	<br/>
-	    	{
-	    		this.props.books.length?
-	    			<div className="book-grid-container">
-	    				{books}
-	    			</div>
-	    		:
-						<div style={paperStyle}>
-		    			<CircularProgress />
-		    			<Typography variant="subheading">Henter bøker</Typography>
-		    		</div>
-	    	}
-    	</div>
-    )
+    return (
+      <div>
+        <Typography variant="display1" align="center">
+          Vi anbefaler
+        </Typography>
+        <br />
+        {this.props.books.length ? (
+          <div className="book-grid-container">{books}</div>
+        ) : (
+          <div style={paperStyle}>
+            <CircularProgress />
+            <Typography variant="subheading">Henter bøker</Typography>
+          </div>
+        )}
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return({
+  return {
     books: state.books.recommended
-  });
+  };
 }
 
-export default connect(mapStateToProps, { getRecommendedBooks })(BookList);
+export default connect(
+  mapStateToProps,
+  { getRecommendedBooks }
+)(BookList);
