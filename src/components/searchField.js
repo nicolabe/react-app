@@ -4,25 +4,48 @@ import Search from "@material-ui/icons/Search";
 import Grid from "@material-ui/core/Grid";
 
 class SearchField extends Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ""
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onSubmit(e) {
+    alert("Du søkte etter " + this.state.search);
+    e.preventDefault();
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   render() {
     const textStyle = {
       width: 1180
     };
 
     return (
-      <Grid container spacing={8} alignItems="flex-end">
-        <Grid item>
-          <Search />
+      <form onSubmit={this.onSubmit}>
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <Search />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="search"
+              name="search"
+              style={textStyle}
+              label="Søk etter bok (tittel, forfatter e.l.)"
+              type="search"
+              value={this.state.search}
+              onChange={this.onChange}
+            />
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            id="search"
-            style={textStyle}
-            label="Søk etter bok (tittel, forfatter e.l.)"
-            type="search"
-          />
-        </Grid>
-      </Grid>
+      </form>
     );
   }
 }
