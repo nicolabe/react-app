@@ -58,6 +58,11 @@ class Navbar extends Component {
     this.setState({ anchorEl: null });
   };
 
+  logout = () => {
+    this.setState({ anchorEl: null });
+    alert("logger ut");
+  };
+
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
@@ -126,7 +131,7 @@ class Navbar extends Component {
                   </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={this.handleClose}>Logg ut</MenuItem>
+                <MenuItem onClick={this.logout}>Logg ut</MenuItem>
               </Menu>
             </div>
           </Toolbar>

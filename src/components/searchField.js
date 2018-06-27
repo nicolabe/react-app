@@ -9,18 +9,16 @@ class SearchField extends Component {
     this.state = {
       search: ""
     };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
-  onSubmit(e) {
-    alert("Du søkte etter " + this.state.search);
+  onSubmit = e => {
+    alert("Du søkte etter '" + this.state.search + "'");
     e.preventDefault();
-  }
+  };
 
-  onChange(e) {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   render() {
     const textStyle = {

@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200,
+    width: 200
   },
   menu: {
-    width: 200,
+    width: 200
   },
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   }
 });
-
 
 class EditUser extends Component {
   constructor(props) {
@@ -30,28 +29,27 @@ class EditUser extends Component {
       address: this.props.user.address,
       phone: this.props.user.phone,
       email: this.props.user.email
-    }
-    this.onChange = this.onChange.bind(this);
+    };
   }
 
-  onChange(e) {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
     this.props.onChange(this.props.user, e.target.name, e.target.value);
-  }
+  };
 
   render() {
     const { classes } = this.props;
 
-    return(
+    return (
       <div className={classes.container}>
         <FormControl fullWidth className={classes.formControl}>
-            <TextField
-              label="Navn"
-              required
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
-            />
+          <TextField
+            label="Navn"
+            required
+            name="name"
+            value={this.state.name}
+            onChange={this.onChange}
+          />
         </FormControl>
         <FormControl fullWidth className={classes.formControl}>
           <TextField
@@ -80,10 +78,10 @@ class EditUser extends Component {
             onChange={this.onChange}
           />
         </FormControl>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
-    )
+    );
   }
 }
 
