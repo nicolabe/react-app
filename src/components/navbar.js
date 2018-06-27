@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
-import { getUser } from "../actions/userActions";
+import { getUser, logoutUser } from "../actions/userActions";
 
 import "../css/navbar.css";
 
@@ -60,7 +60,7 @@ class Navbar extends Component {
 
   logout = () => {
     this.setState({ anchorEl: null });
-    alert("logger ut");
+    this.props.logoutUser();
   };
 
   render() {
@@ -94,7 +94,11 @@ class Navbar extends Component {
             </Tooltip>
             <div>
               <Typography align="left" variant="subheading" color="inherit">
-                {this.props.user.name}
+                {this.props.user.name ? (
+                  this.props.user.name
+                ) : (
+                  <span>Ikke logget inn</span>
+                )}
                 <Tooltip title="Meny">
                   <IconButton
                     aria-owns={open ? "menu-appbar" : null}
@@ -149,5 +153,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUser }
+  { getUser, logoutUser }
 )(withStyles(styles)(Navbar));

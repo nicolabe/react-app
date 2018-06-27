@@ -10,8 +10,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 // Redux
 import { connect } from "react-redux";
-import { getUser } from "../actions/userActions";
-import { updateUser } from "../actions/userActions";
+import { getUser, updateUser } from "../actions/userActions";
 
 // Custom components
 import EditUser from "./editUser";
@@ -60,12 +59,12 @@ class MyPage extends Component {
     this.cancelEdit();
   };
 
-  onChange(user, name, value) {
+  onChange = (user, name, value) => {
     user[name] = value;
     this.setState({
       user: user
     });
-  }
+  };
 
   render() {
     const paperStyle = {
@@ -92,10 +91,7 @@ class MyPage extends Component {
                   Oppdater opplysninger
                 </Typography>
                 <form className={classes.form}>
-                  <EditUser
-                    onChange={this.onChange.bind(this)}
-                    user={this.props.user}
-                  />
+                  <EditUser onChange={this.onChange} user={this.props.user} />
                   <Button
                     style={buttonStyle}
                     type="submit"
