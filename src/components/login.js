@@ -16,24 +16,14 @@ const styles = theme => ({
 });
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showPassword: false,
-      password: ""
-    };
-  }
-
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
-
-  handleClickShowPassword = () => {
-    this.setState(state => ({ showPassword: !state.showPassword }));
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("submitting");
+    console.log(this.state);
   };
 
   render() {
@@ -52,21 +42,31 @@ class Login extends Component {
         <Typography variant="display1" align="center">
           Logg inn
         </Typography>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <TextField
             className={classes.margin}
             id="username"
+            name="username"
             label="Brukernavn"
+            autoFocus={true}
+            onChange={this.handleChange}
           />
           <br />
           <TextField
             className={classes.margin}
             id="password"
+            name="password"
             label="Passord"
             type="password"
+            onChange={this.handleChange}
           />
           <br />
-          <Button variant="contained" color="primary" style={buttonStyle}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={buttonStyle}
+          >
             Submit
           </Button>
         </form>
