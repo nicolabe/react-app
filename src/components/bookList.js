@@ -1,12 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
 import BookItem from "./bookItem.js";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Button from "@material-ui/core/Button";
+import SearchField from "./searchField";
+import AdvancedSearch from "./advancedSearch";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import ExpandLess from "@material-ui/icons/ExpandLess";
 
 import { connect } from "react-redux";
 import { getRecommendedBooks } from "../actions/bookActions";
 
 class BookList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      advancedSearch: false
+    };
+  }
+
   componentWillMount() {
     this.gettingBooks();
   }
@@ -22,6 +34,12 @@ class BookList extends Component {
   }
   // End of simulation
 
+  handleAdvancedSearch = () => {
+    this.setState({
+      advancedSearch: !this.state.advancedSearch
+    });
+  };
+
   render() {
     const books = this.props.books.map(book => {
       return <BookItem key={book.id} book={book} />;
@@ -34,6 +52,17 @@ class BookList extends Component {
 
     return (
       <div>
+        <Typography variant="display2" align="center">
+          Velkommen
+        </Typography>
+        <SearchField />
+        <br />
+        <br />
+        <Button onClick={this.handleAdvancedSearch}>
+          Fler søkemuligheter
+          {this.state.advancedSearch ? <ExpandLess /> : <ExpandMore />}
+        </Button>
+        {this.state.advancedSearch ? <AdvancedSearch /> : <Fragment />}
         <Typography variant="display1" align="center">
           Vi anbefaler
         </Typography>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 // Material UI
 import { withStyles } from "@material-ui/core/styles";
@@ -61,6 +61,7 @@ class Navbar extends Component {
   logout = () => {
     this.setState({ anchorEl: null });
     this.props.logoutUser();
+    window.location = "/login";
   };
 
   render() {
@@ -124,18 +125,28 @@ class Navbar extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem color="inherit" onClick={this.handleClose}>
-                  <Link to="/my_page" className="menu-links">
-                    Min side
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleClose}>
-                  <Link to="/my_loans" className="menu-links">
-                    Mine lån
-                  </Link>
-                </MenuItem>
-                <Divider />
-                <MenuItem onClick={this.logout}>Logg ut</MenuItem>
+                {this.props.user.name ? (
+                  <Fragment>
+                    <MenuItem color="inherit" onClick={this.handleClose}>
+                      <Link to="/my_page" className="menu-links">
+                        Min side
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleClose}>
+                      <Link to="/my_loans" className="menu-links">
+                        Mine lån
+                      </Link>
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={this.logout}>Logg ut</MenuItem>
+                  </Fragment>
+                ) : (
+                  <MenuItem color="inherit" onClick={this.handleClose}>
+                    <Link to="/login" className="menu-links">
+                      Logg inn
+                    </Link>
+                  </MenuItem>
+                )}
               </Menu>
             </div>
           </Toolbar>
