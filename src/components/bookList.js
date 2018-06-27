@@ -28,7 +28,7 @@ class BookList extends Component {
     });
 
     const paperStyle = {
-      padding: 30,
+      paddingTop: 30,
       textAlign: "center"
     };
 
@@ -38,14 +38,16 @@ class BookList extends Component {
           Vi anbefaler
         </Typography>
         <br />
-        {this.props.books.length ? (
-          <div className="book-grid-container">{books}</div>
-        ) : (
-          <div style={paperStyle}>
-            <CircularProgress />
-            <Typography variant="subheading">Henter bøker</Typography>
-          </div>
-        )}
+        <div style={paperStyle}>
+          {this.props.books.length ? (
+            <div className="book-grid-container">{books}</div>
+          ) : (
+            <div>
+              <CircularProgress />
+              <Typography variant="subheading">Henter bøker</Typography>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

@@ -13,11 +13,12 @@ div.grid-container {
 .search-grid-container {
 	display: grid;
 	padding: 20px;
-	grid-template-columns: repeat(2, 1fr)
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .book-grid-container {
 	display: grid;
 	padding: 20px;
-	grid-template-columns: repeat(3, 1fr)
+	grid-column-gap: 1em;
+	grid-template-columns: repeat(3, 1fr);
 }
