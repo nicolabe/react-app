@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Search from '@material-ui/icons/Search';
-import Grid from '@material-ui/core/Grid';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import Search from "@material-ui/icons/Search";
+import Grid from "@material-ui/core/Grid";
 
 class SearchField extends Component {
-
-	render() {
+  render() {
     const textStyle = {
       width: 1180
-    }
+    };
 
-   	return(
+    return (
       <Grid container spacing={8} alignItems="flex-end">
         <Grid item>
           <Search />
@@ -24,7 +23,7 @@ class SearchField extends Component {
           />
         </Grid>
       </Grid>
-    )
+    );
   }
 }
 
