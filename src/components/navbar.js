@@ -115,12 +115,16 @@ class Navbar extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <Link to="/my_page" className="menu-links">
-                  <MenuItem onClick={this.handleClose}>Min side</MenuItem>
-                </Link>
-                <Link to="/my_loans" className="menu-links">
-                  <MenuItem onClick={this.handleClose}>Mine lån</MenuItem>
-                </Link>
+                <MenuItem color="inherit" onClick={this.handleClose}>
+                  <Link to="/my_page" className="menu-links">
+                    Min side
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose}>
+                  <Link to="/my_loans" className="menu-links">
+                    Mine lån
+                  </Link>
+                </MenuItem>
                 <Divider />
                 <MenuItem onClick={this.handleClose}>Logg ut</MenuItem>
               </Menu>
