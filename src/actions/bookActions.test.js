@@ -45,6 +45,5 @@ describe("BookActions", () => {
     const store = mockStore({});
     store.dispatch(getRecommendedBooks());
     expect(store.getActions()).toEqual([expectedAction]);
-    // expect(bookActions.getRecommendedBooks()).toEqual(expectedAction);
   });
 });
