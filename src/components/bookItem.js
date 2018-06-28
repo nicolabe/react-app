@@ -46,7 +46,9 @@ class BookItem extends Component {
               {this.props.book.author}
             </Typography>
             <hr />
-            <Typography component="p">{this.props.book.description}</Typography>
+            <Typography component="p" align="left">
+              {this.props.book.description}
+            </Typography>
           </CardContent>
           <CardActions>
             <Button size="small" color="primary">

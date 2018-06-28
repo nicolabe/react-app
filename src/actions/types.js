@@ -8,3 +8,4 @@ export const UPDATE_USER = "UPDATE_USER";
 
 // Books
 export const GET_RECOMMENDED_BOOKS = "GET_RECOMMENDED_BOOKS";
+export const GET_LOANED_BOOKS = "GET_LOANED_BOOKS";
