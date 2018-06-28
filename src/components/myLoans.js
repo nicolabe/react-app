@@ -6,9 +6,11 @@ import Paper from "@material-ui/core/Paper";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/Info";
 import { withStyles } from "@material-ui/core/styles";
+import Grow from "@material-ui/core/Grow";
+
+// React router
+import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
@@ -27,7 +29,8 @@ const styles = theme => ({
     color: "rgba(255, 255, 255, 0.54)"
   },
   image: {
-    width: 170
+    width: 170,
+    height: "100%"
   },
   titlebar: {
     width: 170
@@ -43,14 +46,22 @@ class MyLoans extends Component {
 
     const books = this.props.books.map(book => {
       return (
-        <GridListTile key={book.id}>
-          <img src={book.image} alt={book.title} className={classes.image} />
-          <GridListTileBar
-            title={book.title}
-            subtitle={<span>av: {book.author}</span>}
-            className={classes.titlebar}
-          />
-        </GridListTile>
+        <Grow in={true} key={book.id} timeout={700}>
+          <GridListTile>
+            <Link to={`/books/${book.id}`}>
+              <img
+                src={book.image}
+                alt={book.title}
+                className={classes.image}
+              />
+              <GridListTileBar
+                title={book.title}
+                subtitle={<span>av: {book.author}</span>}
+                className={classes.titlebar}
+              />
+            </Link>
+          </GridListTile>
+        </Grow>
       );
     });
 
@@ -69,7 +80,7 @@ class MyLoans extends Component {
             Her kan du se hvilke bøker du har lånt
           </Typography>
           <br />
-          <GridList cols="5" cellHeight={250} className={classes.gridList}>
+          <GridList cols={5} cellHeight={255} className={classes.gridList}>
             {books}
           </GridList>
         </Paper>
