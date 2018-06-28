@@ -67,13 +67,6 @@ class MyPage extends Component {
   };
 
   render() {
-    const paperStyle = {
-      padding: 30
-    };
-    const buttonStyle = {
-      margin: 5
-    };
-
     const { classes } = this.props;
 
     return (
@@ -83,7 +76,7 @@ class MyPage extends Component {
         </Typography>
         <br />
         <br />
-        <Paper style={paperStyle}>
+        <Paper className="paper-container">
           <div className={classes.demo}>
             {this.state.editUser ? (
               <div>
@@ -93,7 +86,7 @@ class MyPage extends Component {
                 <form className={classes.form}>
                   <EditUser onChange={this.onChange} user={this.props.user} />
                   <Button
-                    style={buttonStyle}
+                    className="edit-buttons"
                     type="submit"
                     variant="contained"
                     color="primary"
@@ -102,7 +95,7 @@ class MyPage extends Component {
                     Lagre
                   </Button>
                   <Button
-                    style={buttonStyle}
+                    className="edit-buttons"
                     variant="contained"
                     onClick={this.cancelEdit}
                   >

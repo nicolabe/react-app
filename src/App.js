@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./theme";
+import "./css/components.css";
 
 class App extends Component {
   render() {
