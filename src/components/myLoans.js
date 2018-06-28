@@ -3,10 +3,11 @@ import React, { Component } from "react";
 // Material UI
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import IconButton from "@material-ui/core/IconButton";
+import InfoIcon from "@material-ui/icons/Info";
 import { withStyles } from "@material-ui/core/styles";
 
 // Redux
@@ -15,14 +16,23 @@ import { getLoanedBooks } from "../actions/bookActions";
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper
   },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
+  gridList: {},
+  icon: {
+    color: "rgba(255, 255, 255, 0.54)"
+  },
+  image: {
+    width: 170
+  },
+  titlebar: {
+    width: 170
   }
 });
-
 class MyLoans extends Component {
   componentWillMount() {
     this.props.getLoanedBooks();
@@ -33,14 +43,14 @@ class MyLoans extends Component {
 
     const books = this.props.books.map(book => {
       return (
-        <ExpansionPanel key={book.id}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.heading}>{book.title}</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>{book.description}</Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+        <GridListTile key={book.id}>
+          <img src={book.image} alt={book.title} className={classes.image} />
+          <GridListTileBar
+            title={book.title}
+            subtitle={<span>av: {book.author}</span>}
+            className={classes.titlebar}
+          />
+        </GridListTile>
       );
     });
 
@@ -59,7 +69,9 @@ class MyLoans extends Component {
             Her kan du se hvilke bøker du har lånt
           </Typography>
           <br />
-          {books}
+          <GridList cols="5" cellHeight={250} className={classes.gridList}>
+            {books}
+          </GridList>
         </Paper>
       </div>
     );

@@ -56,6 +56,51 @@ export const getLoanedBooks = () => dispatch => {
           "Raskolnikov, a conflicted former student, lives in a tiny, rented room in Saint Petersburg. He refuses all help, even from his friend Razumikhin, and devises a plan to murder and rob an elderly pawn-broker and money-lender, Alyona Ivanovna. His motivation comes from the overwhelming sense that he is predetermined to kill the old woman by some power outside of himself.",
         image:
           "https://images-na.ssl-images-amazon.com/images/I/51WVKaGAS-L._SX331_BO1,204,203,200_.jpg"
+      },
+      {
+        id: 6,
+        title: "A Brief History of Time",
+        author: "Stephen Hawking",
+        description:
+          "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/618hg1-tQiL._SX331_BO1,204,203,200_.jpg"
+      },
+      {
+        id: 7,
+        title: "1984",
+        author: "George Orwell",
+        description:
+          "Winston Smith toes the Party line, rewriting history to satisfy the demands of the Ministry of Truth. With each lie he writes, Winston grows to hate the Party that seeks power for its own sake and persecutes those who dare to commit thoughtcrimes. But as he starts to think for himself, Winston can’t escape the fact that Big Brother is always watching...",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/31lWUHDG7uL._SX282_BO1,204,203,200_.jpg"
+      },
+      {
+        id: 8,
+        title: "Brave New World",
+        author: "Aldous Huxley",
+        description:
+          "Written in the shadow of the rise of fascism during the 1930s, Brave New World likewise speaks to a 21st-century world dominated by mass-entertainment, technology, medicine and pharmaceuticals, the arts of persuasion, and the hidden influence of elites. ",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/41l%2B4UobkRL._SX325_BO1,204,203,200_.jpg"
+      },
+      {
+        id: 9,
+        title: "Harry Potter and the Sorcerer's Stone",
+        author: "J. K. Rowling",
+        description:
+          "Harry Potter has no idea how famous he is. That's because he's being raised by his miserable aunt and uncle who are terrified Harry will learn that he's really a wizard, just as his parents were. But everything changes when Harry is summoned to attend an infamous school for wizards, and he begins to discover some clues about his illustrious birthright. From the surprising way he is greeted by a lovable giant, to the unique curriculum and colorful faculty at his unusual school, Harry finds himself drawn deep inside a mystical world he never knew existed and closer to his own noble destiny.",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg"
+      },
+      {
+        id: 10,
+        title: "The Road",
+        author: "Cormac McCarthy",
+        description:
+          "A father and his son walk alone through burned America. Nothing moves in the ravaged landscape save the ash on the wind. It is cold enough to crack stones, and when the snow falls it is gray. The sky is dark. Their destination is the coast, although they don't know what, if anything, awaits them there. They have nothing; just a pistol to defend themselves against the lawless bands that stalk the road, the clothes they are wearing, a cart of scavenged food—and each other.",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/41OYjTKJ8eL._SX322_BO1,204,203,200_.jpg"
       }
     ]
   });
