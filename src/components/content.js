@@ -9,7 +9,7 @@ class Content extends Component {
         <div className="sidebar-left" />
         <div className="middle-container">
           <div>
-            <Routes />
+            <Routes loggedIn={this.props.loggedIn} />
           </div>
         </div>
         <div className="sidebar-right" />

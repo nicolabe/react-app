@@ -1,20 +1,20 @@
-import { GET_USER, UPDATE_USER } from "../actions/types";
+import { LOGIN, LOGOUT } from "../actions/types";
 
 const initialState = {
-  userData: {}
+  loggedIn: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_USER:
+    case LOGOUT:
       return {
         ...state,
-        userData: action.user
+        loggedIn: false
       };
-    case UPDATE_USER:
+    case LOGIN:
       return {
         ...state,
-        userData: Object.assign({}, action.user)
+        loggedIn: true
       };
     default:
       return state;

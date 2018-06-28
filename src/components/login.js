@@ -8,6 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+// Redux
+import { connect } from "react-redux";
+import { login } from "../actions/loginActions";
+
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit,
@@ -22,8 +26,8 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting");
-    console.log(this.state);
+    this.props.login();
+    this.props.history.location.pathname = "/";
   };
 
   render() {
@@ -75,4 +79,7 @@ class Login extends Component {
   }
 }
 
-export default withStyles(styles)(Login);
+export default connect(
+  null,
+  { login }
+)(withStyles(styles)(Login));

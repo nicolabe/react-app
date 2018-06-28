@@ -18,7 +18,8 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
-import { getUser, logoutUser } from "../actions/userActions";
+import { getUser } from "../actions/userActions";
+import { logout } from "../actions/loginActions";
 
 import "../css/navbar.css";
 
@@ -60,7 +61,7 @@ class Navbar extends Component {
 
   logout = () => {
     this.setState({ anchorEl: null });
-    this.props.logoutUser();
+    this.props.logout();
     window.location = "/login";
   };
 
@@ -86,69 +87,93 @@ class Navbar extends Component {
             >
               Bibliotek
             </Typography>
-            <Tooltip title="Hjem">
-              <IconButton color="inherit">
-                <Link to="/" className="menu-links">
-                  <Home />
-                </Link>
-              </IconButton>
-            </Tooltip>
-            <div>
-              <Typography align="left" variant="subheading" color="inherit">
-                {this.props.user.name ? (
-                  this.props.user.name
-                ) : (
-                  <span>Ikke logget inn</span>
-                )}
-                <Tooltip title="Meny">
-                  <IconButton
-                    aria-owns={open ? "menu-appbar" : null}
-                    aria-haspopup="true"
-                    onClick={this.handleMenu}
-                    color="inherit"
-                  >
-                    <AccountCircle />
+            {this.props.loggedIn ? (
+              <Fragment>
+                <Tooltip title="Hjem">
+                  <IconButton color="inherit">
+                    <Link to="/" className="menu-links">
+                      <Home />
+                    </Link>
                   </IconButton>
                 </Tooltip>
-              </Typography>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right"
-                }}
-                open={open}
-                onClose={this.handleClose}
-              >
-                {this.props.user.name ? (
-                  <Fragment>
-                    <MenuItem color="inherit" onClick={this.handleClose}>
-                      <Link to="/my_page" className="menu-links">
-                        Min side
-                      </Link>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleClose}>
-                      <Link to="/my_loans" className="menu-links">
-                        Mine lån
-                      </Link>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={this.logout}>Logg ut</MenuItem>
-                  </Fragment>
-                ) : (
+                <Typography align="left" variant="subheading" color="inherit">
+                  {this.props.user.name}
+                  <Tooltip title="Meny">
+                    <IconButton
+                      aria-owns={open ? "menu-appbar" : null}
+                      aria-haspopup="true"
+                      onClick={this.handleMenu}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                  </Tooltip>
+                </Typography>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem color="inherit" onClick={this.handleClose}>
+                    <Link to="/my_page" className="menu-links">
+                      Min side
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose}>
+                    <Link to="/my_loans" className="menu-links">
+                      Mine lån
+                    </Link>
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem onClick={this.logout}>Logg ut</MenuItem>
+                </Menu>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Typography align="left" variant="subheading" color="inherit">
+                  <span>Ikke logget inn</span>
+                  <Tooltip title="Meny">
+                    <IconButton
+                      aria-owns={open ? "menu-appbar" : null}
+                      aria-haspopup="true"
+                      onClick={this.handleMenu}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                  </Tooltip>
+                </Typography>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
                   <MenuItem color="inherit" onClick={this.handleClose}>
                     <Link to="/login" className="menu-links">
                       Logg inn
                     </Link>
                   </MenuItem>
-                )}
-              </Menu>
-            </div>
+                </Menu>
+              </Fragment>
+            )}
           </Toolbar>
         </AppBar>
       </div>
@@ -164,5 +189,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUser, logoutUser }
+  { getUser, logout }
 )(withStyles(styles)(Navbar));
