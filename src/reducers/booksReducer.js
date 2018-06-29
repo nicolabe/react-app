@@ -1,4 +1,8 @@
-import { GET_RECOMMENDED_BOOKS, GET_LOANED_BOOKS } from "../actions/types";
+import {
+  GET_RECOMMENDED_BOOKS,
+  GET_LOANED_BOOKS,
+  GET_BOOK
+} from "../actions/types";
 
 const initialState = {
   recommended: [],
@@ -16,6 +20,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loaned: action.books
+      };
+    case GET_BOOK:
+      return {
+        ...state,
+        book: action.book
       };
     default:
       return state;

@@ -22,3 +22,9 @@ div.grid-container {
 	grid-column-gap: 1em;
 	grid-template-columns: repeat(3, 1fr);
 }
+
+.book-detail-grid-container {
+	display: grid;
+	grid-column-gap: 3em;
+	grid-template-columns: 4fr 3fr;
+}
