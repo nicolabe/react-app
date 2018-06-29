@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import FormComponentSelect from "./formComponentSelect";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Slide from "@material-ui/core/Slide";
 
 class AdvancedSearch extends Component {
   constructor() {
@@ -28,40 +29,42 @@ class AdvancedSearch extends Component {
     };
 
     return (
-      <Paper style={paperStyle}>
-        <form>
-          <Typography variant="display1" align="center" style={headerStyle}>
-            Utvidet søk
-          </Typography>
-          <div className="search-grid-container">
-            <FormComponentSelect
-              items={this.sorteringer}
-              name="Sortering"
-              identifier="sorting"
-            />
-            <FormComponentSelect
-              items={this.avdelinger}
-              name="Avdelinger"
-              identifier="departments"
-            />
-            <FormComponentSelect
-              items={this.felt}
-              name="Søk i alle felt"
-              identifier="fields"
-            />
-            <FormComponentSelect
-              items={this.passerFor}
-              name="Passer for"
-              identifier="suitableFor"
-            />
-          </div>
-          <div style={buttonDivStyle}>
-            <Button type="submit" color="primary" variant="contained">
-              Søk nå
-            </Button>
-          </div>
-        </form>
-      </Paper>
+      <Slide in={true} direction="left">
+        <Paper style={paperStyle}>
+          <form>
+            <Typography variant="display1" align="center" style={headerStyle}>
+              Utvidet søk
+            </Typography>
+            <div className="search-grid-container">
+              <FormComponentSelect
+                items={this.sorteringer}
+                name="Sortering"
+                identifier="sorting"
+              />
+              <FormComponentSelect
+                items={this.avdelinger}
+                name="Avdelinger"
+                identifier="departments"
+              />
+              <FormComponentSelect
+                items={this.felt}
+                name="Søk i alle felt"
+                identifier="fields"
+              />
+              <FormComponentSelect
+                items={this.passerFor}
+                name="Passer for"
+                identifier="suitableFor"
+              />
+            </div>
+            <div style={buttonDivStyle}>
+              <Button type="submit" color="primary" variant="contained">
+                Søk nå
+              </Button>
+            </div>
+          </form>
+        </Paper>
+      </Slide>
     );
   }
 }
