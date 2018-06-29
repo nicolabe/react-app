@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Grow from "@material-ui/core/Grow";
 
+// React router
+import { Link } from "react-router-dom";
+
 const styles = {
   card: {
     margin: 20
@@ -54,7 +57,12 @@ class BookItem extends Component {
             <Button size="small" color="primary">
               Del
             </Button>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              color="primary"
+              component={Link}
+              to={`/books/${this.props.book.id}`}
+            >
               Detaljer
             </Button>
           </CardActions>
