@@ -7,11 +7,17 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Grow from "@material-ui/core/Grow";
+import Popover from "@material-ui/core/Popover";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Chat from "@material-ui/icons/Chat";
+import CallEnd from "@material-ui/icons/CallEnd";
+import Email from "@material-ui/icons/Email";
 
 // React router
 import { Link } from "react-router-dom";
 
-const styles = {
+const styles = theme => ({
   card: {
     margin: 20
   },
@@ -22,12 +28,36 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 20
+  },
+  typography: {
+    margin: theme.spacing.unit * 2
   }
-};
+});
 
 class BookItem extends Component {
+  constructor() {
+    super();
+    this.state = {
+      anchorElPopover: null
+    };
+  }
+
+  handleClickShare = event => {
+    this.setState({
+      anchorElPopover: event.currentTarget
+    });
+  };
+
+  handleCloseShare = () => {
+    this.setState({
+      anchorElPopover: null
+    });
+  };
+
   render() {
     const { classes } = this.props;
+    const { anchorElPopover } = this.state;
+
     return (
       <Grow in={true}>
         <Card>
@@ -56,7 +86,11 @@ class BookItem extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              color="primary"
+              onClick={this.handleClickShare}
+            >
               Del
             </Button>
             <Button
@@ -67,6 +101,30 @@ class BookItem extends Component {
             >
               Detaljer
             </Button>
+            <Popover
+              open={Boolean(anchorElPopover)}
+              anchorEl={anchorElPopover}
+              onClose={this.handleCloseShare}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center"
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center"
+              }}
+            >
+              <Tabs
+                fullWidth
+                indicatorColor="primary"
+                textColor="primary"
+                value={false}
+              >
+                <Tab icon={<Chat />} />
+                <Tab icon={<CallEnd />} />
+                <Tab icon={<Email />} />
+              </Tabs>
+            </Popover>
           </CardActions>
         </Card>
       </Grow>
