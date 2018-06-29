@@ -31,11 +31,13 @@ class BookItem extends Component {
     return (
       <Grow in={true}>
         <Card>
-          <CardMedia
-            className={classes.media}
-            image={this.props.book.image}
-            title={this.props.book.title}
-          />
+          <Link to={`/books/${this.props.book.id}`}>
+            <CardMedia
+              className={classes.media}
+              image={this.props.book.image}
+              title={this.props.book.title}
+            />
+          </Link>
           <CardContent>
             <Typography
               gutterBottom
