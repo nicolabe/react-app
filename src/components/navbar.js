@@ -14,7 +14,7 @@ import Home from "@material-ui/icons/Home";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // Router
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
@@ -62,7 +62,7 @@ class Navbar extends Component {
   logout = () => {
     this.setState({ anchorEl: null });
     this.props.logout();
-    window.location = "/login";
+    this.props.history.push("/");
   };
 
   render() {
@@ -138,41 +138,11 @@ class Navbar extends Component {
                 </Menu>
               </Fragment>
             ) : (
-              <Fragment>
-                <Typography align="left" variant="subheading" color="inherit">
-                  <span>Ikke logget inn</span>
-                  <Tooltip title="Meny">
-                    <IconButton
-                      aria-owns={open ? "menu-appbar" : null}
-                      aria-haspopup="true"
-                      onClick={this.handleMenu}
-                      color="inherit"
-                    >
-                      <AccountCircle />
-                    </IconButton>
-                  </Tooltip>
-                </Typography>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem color="inherit" onClick={this.handleClose}>
-                    <Link to="/login" className="menu-links">
-                      Logg inn
-                    </Link>
-                  </MenuItem>
-                </Menu>
-              </Fragment>
+              <Typography align="left" variant="subheading" color="inherit">
+                <Link to="/login" className="menu-links">
+                  Logg inn
+                </Link>
+              </Typography>
             )}
           </Toolbar>
         </AppBar>
@@ -190,4 +160,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { getUser, logout }
-)(withStyles(styles)(Navbar));
+)(withStyles(styles)(withRouter(Navbar)));
