@@ -6,7 +6,7 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        authed.loggedIn === true ? (
+        authed === true ? (
           <Component {...props} />
         ) : (
           <Redirect
