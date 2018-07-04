@@ -18,6 +18,7 @@ import { Link, withRouter } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { getUser } from "../actions/userActions";
 import { logout } from "../actions/loginActions";
 
@@ -157,7 +158,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { getUser, logout }
-)(withStyles(styles)(withRouter(Navbar)));
+const addFunctionality = compose(
+  connect(
+    mapStateToProps,
+    { getUser, logout }
+  ),
+  withStyles(styles),
+  withRouter
+);
+
+export default addFunctionality(Navbar);
