@@ -12,7 +12,7 @@ import { getBook } from "../actions/bookActions";
 import BookItem from "./bookItem";
 
 class Book extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getBook(this.props.match.params.id);
   }
 

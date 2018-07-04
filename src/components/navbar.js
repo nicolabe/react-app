@@ -42,7 +42,7 @@ class Navbar extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (!Object.keys(this.props.user).length) {
       this.props.getUser();
     }

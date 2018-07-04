@@ -37,7 +37,7 @@ const styles = theme => ({
   }
 });
 class MyLoans extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getLoanedBooks();
   }
 

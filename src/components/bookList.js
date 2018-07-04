@@ -19,7 +19,7 @@ class BookList extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.gettingBooks();
   }
 

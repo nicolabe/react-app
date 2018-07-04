@@ -41,7 +41,7 @@ class MyPage extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getUser();
   }
 
