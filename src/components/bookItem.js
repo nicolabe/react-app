@@ -93,14 +93,16 @@ class BookItem extends Component {
             >
               Del
             </Button>
-            <Button
-              size="small"
-              color="primary"
-              component={Link}
-              to={`/books/${this.props.book.id}`}
-            >
-              Detaljer
-            </Button>
+            {!this.props.detailed && (
+              <Button
+                size="small"
+                color="primary"
+                component={Link}
+                to={`/books/${this.props.book.id}`}
+              >
+                Detaljer
+              </Button>
+            )}
             <Popover
               open={Boolean(anchorElPopover)}
               anchorEl={anchorElPopover}

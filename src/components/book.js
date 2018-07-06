@@ -26,7 +26,7 @@ class Book extends Component {
         {this.props.book ? (
           <div className="book-detail-grid-container">
             <div>
-              <BookItem book={this.props.book} />
+              <BookItem book={this.props.book} detailed={true} />
             </div>
             <div>
               <Typography variant="subheading" align="center">
