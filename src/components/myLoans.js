@@ -80,7 +80,7 @@ class MyLoans extends Component {
             Her kan du se hvilke bøker du har lånt
           </Typography>
           <br />
-          <GridList cols={5} cellHeight={255} className={classes.gridList}>
+          <GridList cols={5} cellHeight="auto" className={classes.gridList}>
             {books}
           </GridList>
         </Paper>
