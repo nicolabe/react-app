@@ -23,7 +23,7 @@ class Book extends Component {
 
     return (
       <div>
-        {this.props.book ? (
+        {this.props.book && (
           <div className="book-detail-grid-container">
             <div>
               <BookItem book={this.props.book} detailed={true} />
@@ -49,8 +49,6 @@ class Book extends Component {
               <br />
             </div>
           </div>
-        ) : (
-          <span>Henter bok</span>
         )}
       </div>
     );

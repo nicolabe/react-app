@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 // Custom components
 import BookList from "./bookList";
@@ -38,7 +38,7 @@ class Home extends Component {
           Fler søkemuligheter
           {this.state.advancedSearch ? <ExpandLess /> : <ExpandMore />}
         </Button>
-        {this.state.advancedSearch ? <AdvancedSearch /> : <Fragment />}
+        {this.state.advancedSearch && <AdvancedSearch />}
         <BookList />
       </div>
     );
