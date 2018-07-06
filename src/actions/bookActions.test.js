@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-const books = [
+const recommendedBooks = [
   {
     id: 1,
     title: "The Lord of the Rings",
@@ -17,13 +17,13 @@ const books = [
       "https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg"
   },
   {
-    id: 2,
-    title: "Crime and Punishment",
-    author: "Fyodor Dostoyevsky",
+    id: 5,
+    title: "Sapiens",
+    author: "Yuval Noah Harari",
     description:
-      "Raskolnikov, a conflicted former student, lives in a tiny, rented room in Saint Petersburg. He refuses all help, even from his friend Razumikhin, and devises a plan to murder and rob an elderly pawn-broker and money-lender, Alyona Ivanovna. His motivation comes from the overwhelming sense that he is predetermined to kill the old woman by some power outside of himself.",
+      "One hundred thousand years ago, at least six different species of humans inhabited Earth. Yet today there is only one—homo sapiens. What happened to the others? And what may happen to us?",
     image:
-      "https://images-na.ssl-images-amazon.com/images/I/51WVKaGAS-L._SX331_BO1,204,203,200_.jpg"
+      "https://images-na.ssl-images-amazon.com/images/I/51zJS6PmxbL._SX333_BO1,204,203,200_.jpg"
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ describe("BookActions", () => {
   it("should create an action to get a list of recommended books", () => {
     const expectedAction = {
       type: GET_RECOMMENDED_BOOKS,
-      books: books
+      books: recommendedBooks
     };
     const store = mockStore({});
     store.dispatch(getRecommendedBooks());
