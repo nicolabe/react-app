@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./privateRoute";
 
-import BookList from "../components/bookList";
+import Home from "../components/home";
 import MyPage from "../components/myPage";
 import MyLoans from "../components/myLoans";
 import Login from "../components/login";
@@ -11,7 +11,7 @@ import Book from "../components/book";
 export default props => (
   <Switch>
     <Route exact path="/login" component={Login} />
-    <PrivateRoute exact authed={props.loggedIn} path="/" component={BookList} />
+    <PrivateRoute exact authed={props.loggedIn} path="/" component={Home} />
     <PrivateRoute
       exact
       authed={props.loggedIn}
