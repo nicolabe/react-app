@@ -6,7 +6,7 @@ import Home from "../components/home";
 import MyPage from "../components/myPage";
 import MyLoans from "../components/myLoans";
 import Login from "../components/login";
-import Book from "../components/book";
+import BookDetails from "../components/bookDetails";
 
 export default props => (
   <Switch>
@@ -28,7 +28,7 @@ export default props => (
       exact
       authed={props.loggedIn}
       path="/books/:id"
-      component={Book}
+      component={BookDetails}
     />
   </Switch>
 );

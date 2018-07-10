@@ -11,7 +11,7 @@ import { getBook } from "../actions/bookActions";
 // Custom
 import BookItem from "./bookItem";
 
-class Book extends Component {
+class BookDetails extends Component {
   componentDidMount() {
     this.props.getBook(this.props.match.params.id);
   }
@@ -62,4 +62,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getBook }
-)(Book);
+)(BookDetails);
